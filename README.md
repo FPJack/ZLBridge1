@@ -33,11 +33,20 @@ pod 'ZLBridge'
 }];
 ```
 ### js调用test
+
+#### 无参数
 ```JavaScript
 window.ZLBridge.call('test',(arg) => {
 
 });
 ```
+#### 有参数参数
+```JavaScript
+window.ZLBridge.call('test',{key:"value"},(arg) => {
+
+});
+```
+
 
 
 ## 原生调用js
