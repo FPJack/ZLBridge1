@@ -19,34 +19,44 @@ it, simply add the following line to your Podfile:
 ```ruby
 pod 'ZLBridge'
 ```
-##OC
-
+# 初始化
+```objective-c
 [self.wkwebView initBridgeWithLocalJS:YES];
+```
+## js调用原生
 
-##js调用原生
 
-原生注册test事件
+### 原生注册test事件
+```objective-c
 [self.wkwebView registHandler:@"test" completionHandler:^(id  _Nullable obj, JSCallbackHandler  _Nullable callback) {
     callback(@"js异步调用：这是原生返回的结果1000！",YES);
 }];
-js调用test
+```
+### js调用test
+```JavaScript
 window.ZLBridge.call('test',(arg) => {
 
 });
+```
 
 
-##原生调用js
-js注册jsMethod方法
+## 原生调用js
+### js注册jsMethod方法
+```JavaScript
 window.ZLBridge.register("jsMethod",(arg) => {
      return arg;
  });
-原生调用jsMethod
+ ```
+## 原生调用jsMethod
+```objective-c
 [self.wkwebView callHandler:@"jsMethod" arguments:@[@"这是原生调用js传的值"] completionHandler:^(id  _Nullable obj, NSError * _Nullable error) {
 }];
+```
 
-##移除ZLBridge
+# 移除ZLBridge
+```objective-c
 [self.wkwebView destroyBridge];
-
+```
 ## Author
 
 范鹏, 2551412939@qq.com
